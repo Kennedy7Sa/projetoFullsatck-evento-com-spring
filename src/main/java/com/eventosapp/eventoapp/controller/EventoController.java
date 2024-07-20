@@ -15,10 +15,11 @@ public class EventoController {
     //pra ter uma injeção de dependencia e extanciar os eventos do repositorio
     @Autowired
     private EventoRepository er;
+
     //pra solicitar uma pagina usamos o RequestMapping
     @RequestMapping(value = "/cadastrarevento",method = RequestMethod.GET)
     public String form(){
-        return "templates/evento/formevento";
+        return "evento/formevento";
     }
     @RequestMapping(value = "/cadastrarevento",method = RequestMethod.POST)
     public String form(Evento evento){
