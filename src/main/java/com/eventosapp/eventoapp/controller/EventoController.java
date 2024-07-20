@@ -21,6 +21,8 @@ public class EventoController {
     public String form(){
         return "evento/formevento";
     }
+
+    //para mostrar os dados salvos aqui usamos o requestMethod.POST
     @RequestMapping(value = "/cadastrarevento",method = RequestMethod.POST)
     public String form(Evento evento){
         er.save(evento);
