@@ -17,21 +17,22 @@ public class EventoController {
     private EventoRepository er;
 
     //pra solicitar uma pagina usamos o RequestMapping
-    @RequestMapping(value = "/cadastrarevento",method = RequestMethod.GET)
+    @RequestMapping(value = "/cadastrarevento",method = RequestMethod.GET) //definindo metodo get para retornnar o formulario
     public String form(){
         return "evento/formevento";
     }
 
     //para mostrar os dados salvos aqui usamos o requestMethod.POST
-    @RequestMapping(value = "/cadastrarevento",method = RequestMethod.POST)
+    @RequestMapping(value = "/cadastrarevento",method = RequestMethod.POST) //requisição de salvar no bd , metodo para cadastrar incluir dados
     public String form(Evento evento){
         er.save(evento);
         return "redirect:/cadastrarevento";
     }
-    @RequestMapping("/templates/evento")
+    @RequestMapping("/eventos")
     public ModelAndView listaEventos(){
         ModelAndView mv = new ModelAndView("index");
-        Iterable<Evento> eventos = er.findAll();
+        //busca de eventos em lista com o interable
+        Iterable<Evento> eventos = er.findAll(); // metodo de busca com o repositorio de eventos
         mv.addObject("eventos", eventos);
         return mv;
 

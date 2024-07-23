@@ -1,13 +1,45 @@
 <!doctype html>
-<html lang="pt-br">
+
+<!--temos que importar o thymeleaf pra funcionar na pagina -->
+<html lang="pt-br" xmlns:th="http://thymeleaf.org
+xmls:layout=http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bem vindo ao Cadastro de eventos</title>
+<!--    para usar arquivos css separados é preciso linkar o css com o thymeleaf-->
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <title>EventosApp</title>
 </head>
 <body>
-<h1>Ola mundo com Spring boot</h1>
+<h1>Lista de eventos</h1>
+<!--link para ir para pagina de cadastro-->
+<h3><a href="/cadastrarevento">Cadastrar novo evento</a></h3>
+<table>
+<!--cabeçalho -->
+<thead>
+    <tr>
+    <th>Nome</th>
+    <th>Local</th>
+    <th>Data</th>
+    <th>Horario</th>
+    </tr>
+
+</thead>
+<tbody>
+<tr th:each= "evento : ${eventos}">
+
+            <td><span th:text = "${evento.nome}"></span></td>
+            <td><span th:text = "${evento.local}"></span></td>
+            <td><span th:text = "${evento.data}"></span></td>
+            <td><span th:text = "${evento.horario}"></span></td>
+
+        </tr>
+</tbody>
+</table>
+
 </body>
 </html>
+

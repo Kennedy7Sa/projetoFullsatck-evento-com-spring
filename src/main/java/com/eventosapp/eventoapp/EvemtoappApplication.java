@@ -12,3 +12,5 @@ public class EvemtoappApplication {
 	}
 
 }
+//pra ativar o devtools , va em file, settings , build execution e deplowment, compile , e
+// marque build project automatily depois vá em advansced settings e marque allow auto make
