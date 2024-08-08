@@ -1,14 +1,36 @@
 package com.eventosapp.eventoapp.controller;
 
+import com.eventosapp.eventoapp.models.Evento;
+import com.eventosapp.eventoapp.repository.EventoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 //controllers são criados para controlar as paginas web no navegador
 @Controller
 public class IndexController {
 
+    //pra ter uma injeção de dependencia e extanciar os eventos do repositorio
+    @Autowired
+    private EventoRepository er;
+
+    // para aparecer todos os registros do banco de dados na pagina principal (index)
     @RequestMapping("/")
-    public String index(){
-        return "index";
+    public ModelAndView listaEventos() {
+        ModelAndView mv = new ModelAndView("index");
+        //busca de eventos em lista com o interable
+        Iterable<Evento> eventos = er.findAll(); // metodo de busca com o repositorio de eventos
+        mv.addObject("eventos", eventos);
+        return mv;
+
     }
+    //para mostrar os dados salvos aqui usamos o requestMethod.POST
+    @RequestMapping(value = "/",method = RequestMethod.POST) //requisição de salvar no bd , metodo para cadastrar incluir dados
+    public String form(Evento evento){
+        er.save(evento);
+        return "redirect:/";
+    }
+
 }
-//aqui fazemos a requisição pra chamar o index da pagina que foi criado na pasta template
+

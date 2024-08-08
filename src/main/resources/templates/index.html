@@ -14,9 +14,20 @@ xmls:layout=http://www.ultraq.net.nz/thymeleaf/layout">
     <title>EventosApp</title>
 </head>
 <body>
+<h1>Cadastro de Eventos</h1>
+<!--dentro do formulario abaixo sera colocada todas as tags imput-->
+<form method="post">
+    Nome: <input type="text" value="" name = "nome"/>
+    Local: <input type="text" value="" name = "local"/>
+    Data: <input type="date" value="" name = "data"/>
+    Horario: <input type="text" value="" name = "horario"/>
+
+    <button type = "submit">Salvar</button>
+
+</form>
 <h1>Lista de eventos</h1>
 <!--link para ir para pagina de cadastro-->
-<h3><a href="/cadastrarevento">Cadastrar novo evento</a></h3>
+
 <table>
 <!--cabeçalho -->
 <thead>
@@ -31,7 +42,7 @@ xmls:layout=http://www.ultraq.net.nz/thymeleaf/layout">
 <tbody>
 <tr th:each= "evento : ${eventos}">
 
-            <td><span th:text = "${evento.nome}"></span></td>
+            <td><a href="${(#mvc.url('EC#detalhesEvento').arg(0,evento.codigo)).buil()}"><span th:text = "${evento.nome}"></span></a></td>
             <td><span th:text = "${evento.local}"></span></td>
             <td><span th:text = "${evento.data}"></span></td>
             <td><span th:text = "${evento.horario}"></span></td>

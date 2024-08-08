@@ -16,8 +16,7 @@ public class DataConfiguration {
     /*PARA USAR VARIAVEIS DE AMBIENTE NA CLASSE É PRECISO USAR O SPRING VALUE e usar de forma
     concatenada no codigo como uma variavel */
 
-    @Value("${DB_NAME}")
-    private String dbName;
+
 
     @Value("${DB_USER}")
     private String dbUser;
@@ -30,7 +29,7 @@ public class DataConfiguration {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/"+dbName+"?useTimezone=true&serverTimezone=UTC");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/eventosapp?useTimezone=true&serverTimezone=UTC");
         dataSource.setUsername(dbUser);
         dataSource.setPassword(dbPassword);
         return dataSource;
