@@ -36,7 +36,7 @@ public class IndexController {
     @RequestMapping("/{codigo}")
     public ModelAndView detalhesEvento(@PathVariable("codigo") long codigo){
         Evento evento = er.findByCodigo(codigo);
-        ModelAndView mv = new ModelAndView("detalhes");
+        ModelAndView mv = new ModelAndView("evento/detalhesEvento"); //nome do template html a ser chamado
         mv.addObject("evento", evento);
         return mv;
 

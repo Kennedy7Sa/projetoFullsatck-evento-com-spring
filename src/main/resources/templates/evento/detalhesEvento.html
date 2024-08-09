@@ -1,0 +1,31 @@
+<!doctype html>
+<!--temos que importar o thymeleaf pra funcionar na pagina -->
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--    para usar arquivos css separados é preciso linkar o css com o thymeleaf-->
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <title>EventosApp</title>
+</head>
+<body>
+
+<h1>Evento</h1>
+<!--link para ir para pagina de cadastro-->
+<h3><a href="/">Lista de eventos</a></h3>
+
+<div th:each="evento : ${evento}" class="container">
+    <div class="row">
+        <!--    passando os campos que receberão os registros do bd -->
+        <p>Nome: <span th:text="${evento.nome}"></span></p>
+        <p>Local: <span th:text="${evento.local}"></span></p>
+        <p>Data: <span th:text="${evento.data}"></span></p>
+        <p>Horário: <span th:text="${evento.horario}"></span></p>
+    </div>
+</div>
+
+</body>
+</html>
