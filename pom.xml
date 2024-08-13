@@ -63,7 +63,17 @@
 			<version>8.0.20</version>
 			<scope>runtime</scope>
 		</dependency>
-
+<!--para usar o notEmpty e validar campos vazios -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.1.7.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+			<version>3.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

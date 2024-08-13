@@ -1,11 +1,9 @@
 package com.eventosapp.eventoapp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 //no pacote modelos fica a classe entidade em si com seus atributos
 @Entity
@@ -20,6 +18,12 @@ public class Evento implements Serializable { // implement so serializable para 
     private String local;
     private String data;
     private String horario;
+
+
+    //relação um evento para muitos convidados
+
+    @OneToMany
+    private List<Convidado> convidado; // aqui nesse caso é uma lista de convidados
 
     public long getCodigo() {
         return codigo;

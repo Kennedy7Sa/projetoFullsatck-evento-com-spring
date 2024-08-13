@@ -1,0 +1,125 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Botão */
+button {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto 20px auto;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Container Principal */
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+button[type="submit"] {
+    max-width: 200px;
+    margin: 20px auto;
+}
+
+/* Lista de convidados */
+h5 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-field {
+    margin-bottom: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1, h5 {
+        font-size: 24px;
+    }
+
+    p, input[type="text"], button {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1, h5 {
+        font-size: 20px;
+    }
+
+    p, input[type="text"], button {
+        font-size: 14px;
+    }
+
+    button {
+        max-width: 100%;
+    }
+
+    input[type="text"] {
+        max-width: 100%;
+    }
+}

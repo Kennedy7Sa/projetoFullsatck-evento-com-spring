@@ -1,30 +1,53 @@
 <!doctype html>
-<!--temos que importar o thymeleaf pra funcionar na pagina -->
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--    para usar arquivos css separados é preciso linkar o css com o thymeleaf-->
-    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <link th:href="@{/css/detalhesEvento.css}" rel="stylesheet" />
     <title>EventosApp</title>
 </head>
+
 <body>
 
 <h1>Evento</h1>
-<!--link para ir para pagina de cadastro-->
-<h3><a href="/">Lista de eventos</a></h3>
 
+<!-- Botão para voltar para a lista de eventos -->
+<button onclick="location.href='/';">Lista de eventos</button>
+
+<!-- Exibindo detalhes do evento -->
 <div th:each="evento : ${evento}" class="container">
     <div class="row">
-        <!--    passando os campos que receberão os registros do bd -->
         <p>Nome: <span th:text="${evento.nome}"></span></p>
         <p>Local: <span th:text="${evento.local}"></span></p>
         <p>Data: <span th:text="${evento.data}"></span></p>
         <p>Horário: <span th:text="${evento.horario}"></span></p>
     </div>
+
+    <th:block th:include="mensagemValidacao"></th:block>
+    <!-- Formulário para adicionar convidado -->
+    <form method="post">
+        Nome: <input type="text" name="nomeConvidado" />
+        RG: <input type="text" name="rg" />
+        <button type="submit">Adicionar convidado</button>
+    </form>
+
+    <!-- Exibindo a lista de convidados -->
+    <div class="container">
+        <h5>Lista de convidados</h5>
+        <div class="row" th:each="convidado : ${convidados}">
+            <div class="input-field col s6">
+                <p><span th:text="${convidado.nomeConvidado}"></span></p>
+            </div>
+            <div class="input-field col s6">
+                <p><span th:text="${convidado.rg}"></span></p>
+<!--                linha para separar os registros-->
+                <hr>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 </body>
