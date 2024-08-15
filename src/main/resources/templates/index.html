@@ -20,7 +20,7 @@ xmls:layout=http://www.ultraq.net.nz/thymeleaf/layout">
     Nome: <input type="text" value="" name = "nome"/>
     Local: <input type="text" value="" name = "local"/>
     Data: <input type="date" value="" name = "data"/>
-    Horario: <input type="text" value="" name = "horario"/>
+    Horario: <input type="time" value="" name = "horario"/>
 
     <button type = "submit">Salvar</button>
 
@@ -32,10 +32,12 @@ xmls:layout=http://www.ultraq.net.nz/thymeleaf/layout">
 <!--cabeçalho -->
 <thead>
     <tr>
+<!--        th é colunas -->
     <th>Nome</th>
     <th>Local</th>
     <th>Data</th>
     <th>Horario</th>
+    <th>Deletar</th>
     </tr>
 
 </thead>
@@ -43,10 +45,11 @@ xmls:layout=http://www.ultraq.net.nz/thymeleaf/layout">
 <tr th:each= "evento : ${eventos}">
 <!--        a linha abaixo serve para detalhar o evento ou registro chamando o codigo cadastrado do BD-->
     <td><a th:href="${#mvc.url('IC#detalhesEvento').arg(0, evento.codigo).build()}"><span th:text="${evento.nome}"></span></a></td>
-
     <td><span th:text = "${evento.local}"></span></td>
-            <td><span th:text = "${evento.data}"></span></td>
-            <td><span th:text = "${evento.horario}"></span></td>
+    <td><span th:text = "${evento.data}"></span></td>
+    <td><span th:text = "${evento.horario}"></span></td>
+    <td><a th:href="${#mvc.url('IC#deletarEvento').arg(0, evento.codigo).build()}"><span th:text="${evento.codigo}"></span></a></td>
+
 
         </tr>
 </tbody>

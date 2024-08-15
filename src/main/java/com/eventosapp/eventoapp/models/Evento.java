@@ -22,7 +22,8 @@ public class Evento implements Serializable { // implement so serializable para 
 
     //relação um evento para muitos convidados
 
-    @OneToMany
+    @OneToMany( mappedBy="evento", cascade=CascadeType.ALL, orphanRemoval=true)
+
     private List<Convidado> convidado; // aqui nesse caso é uma lista de convidados
 
     public long getCodigo() {

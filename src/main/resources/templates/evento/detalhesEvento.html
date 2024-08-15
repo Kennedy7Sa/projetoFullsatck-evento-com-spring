@@ -38,10 +38,12 @@
         <h5>Lista de convidados</h5>
         <div class="row" th:each="convidado : ${convidados}">
             <div class="input-field col s6">
-                <p><span th:text="${convidado.nomeConvidado}"></span></p>
+
+                <p>Nome:<span th:text="${convidado.nomeConvidado}"></span></p>
             </div>
             <div class="input-field col s6">
-                <p><span th:text="${convidado.rg}"></span></p>
+                <p>RG:<span th:text="${convidado.rg}"></span></p>
+                <td><a th:href="${#mvc.url('IC#deletarConvidado').arg(0, convidado.rg).build()}"><span th:text="${evento.codigo}"></span></a></td>
 <!--                linha para separar os registros-->
                 <hr>
             </div>

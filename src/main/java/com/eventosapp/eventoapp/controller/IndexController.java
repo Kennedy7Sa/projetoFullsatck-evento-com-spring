@@ -81,6 +81,14 @@ public class IndexController {
         String codigo = "" + codigoLong;
         return "redirect:/" + codigo;
     }
+    @RequestMapping("/deletar")
+    public String deletarEvento(long codigo){
+      Evento evento = er.findByCodigo(codigo);
+      er.delete(evento);
+
+
+        return "redirect:/";
+    }
 
 }
 
